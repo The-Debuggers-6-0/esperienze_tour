@@ -1,0 +1,159 @@
+<!-- Template: Tour by Untree.co / ThemeWagon — https://untree.co/license/ -->
+<!doctype html>
+<html lang="it">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="<[base]>/skins/tour/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="<[base]>/skins/tour/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<[base]>/skins/tour/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="<[base]>/skins/tour/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="<[base]>/skins/tour/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="<[base]>/skins/tour/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="<[base]>/skins/tour/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="<[base]>/skins/tour/css/daterangepicker.css">
+    <link rel="stylesheet" href="<[base]>/skins/tour/css/aos.css">
+    <link rel="stylesheet" href="<[base]>/skins/tour/css/style.css?v=6">
+
+    <title><[title]> &mdash; Esperienze &amp; Tour</title>
+    <style>
+        .site-nav { padding: 1.5rem 0 !important; }
+        .site-nav .site-menu a { font-size: 1.1rem !important; letter-spacing: .02em !important; }
+        .site-nav .site-menu li { margin-left: 1.2rem !important; }
+        .site-nav .site-navigation .logo,
+        a.logo { font-size: 2rem !important; font-weight: 800 !important; line-height: 1 !important; }
+        .hero.hero-inner { min-height: 340px; padding: 8rem 0 4rem; }
+        .hero.hero-inner h1 { font-size: 3.2rem; margin-bottom: 1rem; }
+        .hero.hero-inner .text-white-50 { font-size: 1.15rem; margin-top: .5rem; }
+    </style>
+    <[head]>
+</head>
+<body>
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close">
+                <span class="icofont-close js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+
+    <nav class="site-nav">
+        <div class="container">
+            <div class="site-navigation">
+                <a href="<[base]>/index.php" class="logo m-0">Esperienze <span style="opacity:.75">&amp; Tour</span></a>
+
+                <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
+                    <li><a href="<[base]>/index.php">Home</a></li>
+                    <li><a href="<[base]>/tours.php">Esperienze</a></li>
+                    <li><a href="<[base]>/about.php">Chi siamo</a></li>
+                    <li><a href="<[base]>/contact.php">Contatti</a></li>
+                    <[if!empty is_logged]>
+                    <li><a href="<[base]>/account.php">Ciao, <[user.name]></a></li>
+                    <li><a href="<[base]>/logout.php">Esci</a></li>
+                    <[/if!empty]>
+                    <[ifempty is_logged]>
+                    <li><a href="<[base]>/login.php">Accedi</a></li>
+                    <li><a href="<[base]>/register.php">Registrati</a></li>
+                    <[/ifempty]>
+                </ul>
+
+                <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
+                    <span></span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <[body]>
+
+    <div class="site-footer">
+        <div class="inner first">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="widget">
+                            <h3 class="heading">Esperienze &amp; Tour</h3>
+                            <p>Scopri e prenota le migliori esperienze: tour guidati, attività all'aria aperta e avventure indimenticabili.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2 pl-lg-5">
+                        <div class="widget">
+                            <h3 class="heading">Pagine</h3>
+                            <ul class="links list-unstyled">
+                                <li><a href="<[base]>/index.php">Home</a></li>
+                                <li><a href="<[base]>/tours.php">Esperienze</a></li>
+                                <li><a href="<[base]>/about.php">Chi siamo</a></li>
+                                <li><a href="<[base]>/contact.php">Contatti</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2">
+                        <div class="widget">
+                            <h3 class="heading">Account</h3>
+                            <ul class="links list-unstyled">
+                                <[if!empty is_logged]>
+                                <li><a href="<[base]>/account.php">Il mio account</a></li>
+                                <li><a href="<[base]>/logout.php">Esci</a></li>
+                                <[/if!empty]>
+                                <[ifempty is_logged]>
+                                <li><a href="<[base]>/login.php">Accedi</a></li>
+                                <li><a href="<[base]>/register.php">Registrati</a></li>
+                                <[/ifempty]>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="widget">
+                            <h3 class="heading">Contatti</h3>
+                            <ul class="list-unstyled quick-info links">
+                                <li class="email"><a href="#">info@esperienze-tour.it</a></li>
+                                <li class="phone"><a href="#">+39 0000 000000</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="inner dark">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-8 mb-3 mb-md-0 mx-auto">
+                        <p>&copy; <[year]> Esperienze &amp; Tour &mdash; progetto didattico Tecnologie del Web 2025/26.<br>
+                        Template <a href="https://themewagon.com/themes/free-bootstrap-5-travel-agency-website-template-tour/" class="link-highlight">Tour</a> distribuito da <a href="https://themewagon.com" target="_blank">ThemeWagon</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+    <script src="<[base]>/skins/tour/js/jquery-3.4.1.min.js"></script>
+    <script src="<[base]>/skins/tour/js/popper.min.js"></script>
+    <script src="<[base]>/skins/tour/js/bootstrap.min.js"></script>
+    <script src="<[base]>/skins/tour/js/owl.carousel.min.js"></script>
+    <script src="<[base]>/skins/tour/js/jquery.animateNumber.min.js"></script>
+    <script src="<[base]>/skins/tour/js/jquery.waypoints.min.js"></script>
+    <script src="<[base]>/skins/tour/js/jquery.fancybox.min.js"></script>
+    <script src="<[base]>/skins/tour/js/aos.js"></script>
+    <script src="<[base]>/skins/tour/js/moment.min.js"></script>
+    <script src="<[base]>/skins/tour/js/daterangepicker.js"></script>
+    <script src="<[base]>/skins/tour/js/typed.js"></script>
+    <script src="<[base]>/skins/tour/js/custom.js"></script>
+    <[javascript]>
+
+</body>
+</html>
