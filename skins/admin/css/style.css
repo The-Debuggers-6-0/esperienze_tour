@@ -1,0 +1,76 @@
+/*
+ * Compat layer: Bootstrap 5 utility classes mancanti in AdminLTE 3 (Bootstrap 4).
+ * Permette di usare AdminLTE 3 senza modificare i template dei blocchi.
+ */
+
+/* Spacing BS5 → BS4 */
+.me-1 { margin-right: 0.25rem !important; }
+.me-2 { margin-right: 0.5rem  !important; }
+.me-3 { margin-right: 1rem    !important; }
+.ms-1 { margin-left:  0.25rem !important; }
+.ms-2 { margin-left:  0.5rem  !important; }
+.ms-3 { margin-left:  1rem    !important; }
+.gap-2 { gap: 0.5rem !important; }
+
+/* Font weight BS5 → BS4 */
+.fw-semibold { font-weight: 600 !important; }
+.fw-bold     { font-weight: 700 !important; }
+
+/* Badge colori BS5 → BS4 */
+.badge.bg-success   { background-color: #28a745 !important; color: #fff; }
+.badge.bg-secondary { background-color: #6c757d !important; color: #fff; }
+.badge.bg-danger    { background-color: #dc3545 !important; color: #fff; }
+.badge.bg-primary   { background-color: #007bff !important; color: #fff; }
+.badge.bg-warning   { background-color: #ffc107 !important; color: #212529; }
+
+/* form-select (BS5) → emulato */
+.form-select {
+    display: block; width: 100%;
+    padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+    font-size: 1rem; line-height: 1.5; color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da; border-radius: 0.25rem;
+    appearance: auto;
+}
+
+/* table-light in AdminLTE */
+.table-light th { background-color: #f4f6f9; }
+
+/* text-end BS5 → text-right BS4 */
+.text-end { text-align: right !important; }
+
+/* form-label BS5 */
+.form-label { margin-bottom: 0.5rem; display: inline-block; }
+
+/* font-size BS5 */
+.fs-1 { font-size: 2.5rem  !important; }
+.fs-2 { font-size: 2rem    !important; }
+.fs-3 { font-size: 1.75rem !important; }
+.fs-4 { font-size: 1.5rem  !important; }
+.fs-5 { font-size: 1.25rem !important; }
+.fs-6 { font-size: 1rem    !important; }
+
+/* row gutter BS5 (g-3 = 1rem gap) */
+.row.g-3 { --bs-gutter-x: 1rem; --bs-gutter-y: 1rem; margin-right: -0.5rem; margin-left: -0.5rem; }
+.row.g-3 > * { padding-right: 0.5rem; padding-left: 0.5rem; margin-top: 1rem; }
+
+/* align-middle su celle tabella */
+.table.align-middle td,
+.table.align-middle th { vertical-align: middle; }
+td.align-middle, th.align-middle { vertical-align: middle !important; }
+
+/* stretched-link (già in BS4.4+, ridefinito per sicurezza) */
+.stretched-link::after {
+    position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+    z-index: 1; content: "";
+}
+
+/* Badge colori aggiuntivi */
+.badge.bg-info    { background-color: #17a2b8 !important; color: #fff; }
+.badge.bg-primary { background-color: #007bff !important; color: #fff; }
+
+/* badge warning text fix */
+.badge.bg-warning { color: #212529 !important; }
+
+/* Piccole correzioni layout */
+.content-wrapper { min-height: calc(100vh - 101px); }
