@@ -19,7 +19,7 @@ $config = [
     'db' => [
         'host'    => '127.0.0.1',
         'port'    => 3306,
-        'name'    => 'esperienze_tour',
+        'name'    => 'progettoteconlogia',
         'user'    => 'root',
         'pass'    => '',
         'charset' => 'utf8mb4',
@@ -28,7 +28,7 @@ $config = [
     /* --- Skin e paths -------------------------------------------- */
     'skin'         => 'tour',          // frontend skin
     'admin_skin'   => 'admin',         // backend skin
-    'base'         => '/esperienze_tour', // base URL relativa alla root di XAMPP
+    'base'         => '/progettoteconlogia', // base URL relativa alla root di XAMPP
     'upload_dir'   => 'uploads',
 
     /* --- Cache del template engine ------------------------------- */
