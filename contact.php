@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/include/bootstrap.inc.php';
+block_admin();
 
 $skin = new_page($config['skin']);
 $skin->setContent('title',     'Contatti');

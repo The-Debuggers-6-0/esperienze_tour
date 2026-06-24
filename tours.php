@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/include/bootstrap.inc.php';
+block_admin();
 
 $catId = isset($_GET['cat']) ? (int)$_GET['cat'] : 0;
 

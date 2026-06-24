@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/include/bootstrap.inc.php';
 require_login();
+block_admin();
 
 $userId = $_SESSION['user']['id'];
 

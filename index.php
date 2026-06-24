@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/include/bootstrap.inc.php';
+block_admin();
 
 //Prendo i 6 tour più recenti per la home
 $featured = db()->query(

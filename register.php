@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/include/bootstrap.inc.php';
+block_admin();
 
 if (!empty($_SESSION['user'])) {
     header('Location: ' . $config['base'] . '/index.php');

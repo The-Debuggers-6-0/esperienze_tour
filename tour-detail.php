@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/include/bootstrap.inc.php';
+block_admin();
 
 $id = (int)($_GET['id'] ?? 0);
 
