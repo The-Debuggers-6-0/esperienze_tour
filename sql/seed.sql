@@ -59,6 +59,34 @@ INSERT INTO users_has_groups (users_id, groups_id) VALUES
 (@giulia_id, 2);
 
 -- ============================================================
+-- SERVIZI (controllo accessi / ACL)
+-- Ogni pagina protetta del backoffice è registrata come "servizio"
+-- (username = nome dello script). I servizi sono concessi ai gruppi
+-- tramite services_has_groups; gli utenti li ereditano per appartenenza
+-- al gruppo (users_has_groups). Al login i servizi dell'utente vengono
+-- caricati in sessione e require_service() (include/auth.inc.php) li
+-- applica pagina per pagina.
+-- ============================================================
+
+INSERT INTO services (username) VALUES
+('index.php'),
+('experiences.php'), ('experiences-form.php'), ('experiences-delete.php'),
+('categories.php'),  ('categories-form.php'),  ('categories-delete.php'),
+('locations.php'),   ('locations-form.php'),   ('locations-delete.php'),
+('guides.php'),      ('guides-form.php'),      ('guides-delete.php'),
+('time-slots.php'),  ('time-slots-form.php'),  ('time-slots-delete.php'),
+('bookings.php'),    ('bookings-form.php'),    ('bookings-delete.php'),
+('reviews.php'),     ('reviews-delete.php'),
+('features.php'),    ('features-form.php'),    ('features-delete.php'),
+('users.php'),       ('users-form.php'),       ('users-delete.php'),
+('groups.php'),      ('groups-form.php'),      ('groups-delete.php'),
+('services.php'),    ('services-form.php'),    ('services-delete.php');
+
+-- Tutti i servizi del backoffice sono concessi al gruppo admin (id = 1)
+INSERT INTO services_has_groups (services_username, groups_id)
+SELECT username, 1 FROM services;
+
+-- ============================================================
 -- CATEGORIE
 -- ============================================================
 

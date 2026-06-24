@@ -29,6 +29,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'name'     => $row['name'],
             ];
 
+            // Carica in sessione i servizi (pagine protette) a cui l'utente ha
+            // accesso tramite i suoi gruppi — meccanismo Services (ACL).
+            $_SESSION['user']['services'] = load_user_services((int)$row['id']);
+
             // Se è admin → dashboard admin, altrimenti → home
             $isAdmin = db()->prepare(
                 'SELECT 1 FROM users_has_groups ug

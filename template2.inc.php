@@ -678,7 +678,7 @@ Class Template {
 
 		/* check if te script is not service: if not entites has to be replace */
 
-		if (!isset($_SESSION['user']['services'][basename($_SERVER['SCRIPT_NAME'])]))  {
+		if (true)  { // entità HTML dei template sempre decodificate; controllo accessi via servizi in include/auth.inc.php (require_service)
 
 //			/* entities to search */
 //			$searchVal = array("&lt;", "&gt;");
