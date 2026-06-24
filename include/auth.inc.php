@@ -44,13 +44,9 @@ function load_user_services(int $userId): array {
 
 /*
  * Verifica se l'utente loggato ha accesso a un servizio.
- * Se i servizi non sono ancora in sessione (es. sessione aperta prima del login
- * con questo meccanismo), li carica al volo dal database.
+ * I servizi vengono caricati in sessione al login (login.php).
  */
 function has_service(string $service): bool {
-    if (!isset($_SESSION['user']['services']) && !empty($_SESSION['user']['id'])) {
-        $_SESSION['user']['services'] = load_user_services((int)$_SESSION['user']['id']);
-    }
     return isset($_SESSION['user']['services'][$service]);
 }
 
