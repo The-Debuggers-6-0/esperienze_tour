@@ -9,7 +9,7 @@ $categories = db()->query('SELECT id, name FROM categories ORDER BY name')->fetc
 // Se è stata selezionata una categoria, filtro per quella categoria, altrimenti prende tutte le esperienze
 if ($catId > 0) {
     $stmt = db()->prepare(
-        'SELECT e.id, e.title, e.slug, e.short_description, e.price, e.location,
+        'SELECT e.id, e.title, e.slug, e.price, e.location,
                 p.filename AS cover
          FROM experiences e
          LEFT JOIN experience_photos p ON p.experience_id = e.id AND p.is_cover = 1
@@ -19,7 +19,7 @@ if ($catId > 0) {
     $stmt->execute([$catId]);
 } else {
     $stmt = db()->query(
-        'SELECT e.id, e.title, e.slug, e.short_description, e.price, e.location,
+        'SELECT e.id, e.title, e.slug, e.price, e.location,
                 p.filename AS cover
          FROM experiences e
          LEFT JOIN experience_photos p ON p.experience_id = e.id AND p.is_cover = 1
@@ -62,7 +62,6 @@ foreach ($experiences as $e) {
     $block->setContent('experience_title',    htmlspecialchars($e['title']));
     $block->setContent('experience_location', htmlspecialchars($e['location'] ?? ''));
     $block->setContent('experience_price',    number_format($e['price'], 2, ',', '.'));
-    $block->setContent('experience_short',    htmlspecialchars($e['short_description'] ?? ''));
 }
 
 $skin->setContent('body', $block->get());

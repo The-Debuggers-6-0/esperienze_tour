@@ -5,7 +5,6 @@ require_admin();
 
 $totalUsers       = db()->query('SELECT COUNT(*) FROM users')->fetchColumn();
 $totalGroups      = db()->query('SELECT COUNT(*) FROM groups')->fetchColumn();
-$totalServices    = db()->query('SELECT COUNT(*) FROM services')->fetchColumn();
 $totalExp         = db()->query('SELECT COUNT(*) FROM experiences WHERE is_active = 1')->fetchColumn();
 $totalExpDraft    = db()->query('SELECT COUNT(*) FROM experiences WHERE is_active = 0')->fetchColumn();
 $totalCategories  = db()->query('SELECT COUNT(*) FROM categories')->fetchColumn();
@@ -25,7 +24,6 @@ $skin->setContent('user.username', $_SESSION['user']['username'] ?? '');
 $block = new_block('dashboard');
 $block->setContent('total_users',      $totalUsers);
 $block->setContent('total_groups',     $totalGroups);
-$block->setContent('total_services',   $totalServices);
 $block->setContent('total_exp',        $totalExp);
 $block->setContent('total_exp_draft',  $totalExpDraft);
 $block->setContent('total_categories', $totalCategories);
