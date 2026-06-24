@@ -1,9 +1,3 @@
--- =============================================================
---  clean.sql — svuota tutti i dati di test
---  Mantiene: utente admin, gruppo admin, relazione admin↔gruppo
---  Eseguire in phpMyAdmin su database progettotecnologia
--- =============================================================
-
 USE `progettotecnologia`;
 
 SET FOREIGN_KEY_CHECKS = 0;

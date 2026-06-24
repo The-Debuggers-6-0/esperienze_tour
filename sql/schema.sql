@@ -1,19 +1,3 @@
--- =============================================================
---  Schema database: piattaforma di prenotazione Esperienze & Tour
---  Tecnologie del Web 2025/2026
---
---  Le tabelle saranno aggiunte slice-by-slice secondo la
---  metodologia iterativa richiesta dal docente.
---
---  Slice 1: users, groups, services, users_has_groups,
---           services_has_groups
---  Slice 2: experiences, categories, experience_photos
---  Slice 3: locations, guides, experience_guides
---  Slice 4: time_slots
---  Slice 5: bookings, booking_participants
---  Slice 6: reviews
--- =============================================================
-
 CREATE DATABASE IF NOT EXISTS `progettotecnologia`
     DEFAULT CHARACTER SET utf8mb4
     DEFAULT COLLATE utf8mb4_unicode_ci;
@@ -56,8 +40,6 @@ CREATE TABLE services_has_groups (
     FOREIGN KEY (groups_id)         REFERENCES groups(id) ON DELETE CASCADE
 );
 
--- Slice 2: catalogo esperienze
-
 CREATE TABLE categories (
     id          INT AUTO_INCREMENT PRIMARY KEY,
     name        VARCHAR(100) NOT NULL,
@@ -86,8 +68,6 @@ CREATE TABLE experience_photos (
     sort_order    INT          NOT NULL DEFAULT 0,
     FOREIGN KEY (experience_id) REFERENCES experiences(id) ON DELETE CASCADE
 );
-
--- Slice 3: locations, guides, experience_guides
 
 CREATE TABLE locations (
     id          INT AUTO_INCREMENT PRIMARY KEY,
@@ -122,7 +102,6 @@ ALTER TABLE experiences
     ADD COLUMN location_id INT DEFAULT NULL AFTER location,
     ADD FOREIGN KEY fk_exp_location (location_id) REFERENCES locations(id) ON DELETE SET NULL;
 
--- Slice 4: time_slots
 
 CREATE TABLE time_slots (
     id             INT AUTO_INCREMENT PRIMARY KEY,
@@ -137,7 +116,6 @@ CREATE TABLE time_slots (
     INDEX idx_start (start_datetime)
 );
 
--- Slice 5: bookings, booking_participants
 
 CREATE TABLE bookings (
     id                 INT AUTO_INCREMENT PRIMARY KEY,
@@ -160,7 +138,6 @@ CREATE TABLE booking_participants (
     FOREIGN KEY (booking_id) REFERENCES bookings(id) ON DELETE CASCADE
 );
 
--- Slice 9: home_features (box "Perché sceglierci" gestibili da backoffice)
 
 CREATE TABLE home_features (
     id          INT AUTO_INCREMENT PRIMARY KEY,
@@ -170,7 +147,6 @@ CREATE TABLE home_features (
     sort_order  INT          NOT NULL DEFAULT 0
 );
 
--- Slice 6: reviews
 
 CREATE TABLE reviews (
     id            INT AUTO_INCREMENT PRIMARY KEY,

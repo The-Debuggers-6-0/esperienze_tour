@@ -1,8 +1,5 @@
 -- =============================================================
---  seed.sql — dati di esempio per Esperienze & Tour
---  Eseguibile sia su schema appena creato sia DOPO clean.sql
---
---  Credenziali (tutti con password "password"):
+-- Credenziali (tutti con password "password"):
 --    admin        / password  (amministratore)
 --    mario.rossi  / password
 --    giulia.verdi / password
@@ -10,13 +7,6 @@
 
 USE `progettotecnologia`;
 
--- ============================================================
--- UTENTE E GRUPPO ADMIN
--- Inserimento idempotente con INSERT IGNORE: se l'admin esiste
--- già (es. dopo clean.sql, che lo preserva) le righe in conflitto
--- su PRIMARY KEY / UNIQUE vengono semplicemente saltate, senza errori
--- né duplicati. Su uno schema vuoto invece l'admin viene creato.
--- ============================================================
 
 INSERT IGNORE INTO groups (id, name, description) VALUES
 (1, 'admin', 'Amministratori del sistema');
@@ -28,18 +18,9 @@ INSERT IGNORE INTO users (id, username, email, password, name, surname) VALUES
 
 INSERT IGNORE INTO users_has_groups (users_id, groups_id) VALUES (1, 1);
 
--- ============================================================
--- GRUPPO "VISITATORI"
--- Gruppo di default per gli utenti registrati normali (non admin):
--- chi si registra dal sito o viene creato dall'admin finisce qui.
--- ============================================================
 
 INSERT IGNORE INTO groups (id, name, description) VALUES
 (2, 'Visitatori', 'Utenti registrati del sito');
-
--- ============================================================
--- UTENTI DI TEST
--- ============================================================
 
 INSERT INTO users (username, email, password, name, surname) VALUES
 ('mario.rossi', 'mario.rossi@test.it',
@@ -53,20 +34,10 @@ INSERT INTO users (username, email, password, name, surname) VALUES
  'Giulia', 'Verdi');
 SET @giulia_id = LAST_INSERT_ID();
 
--- I due utenti di test sono normali visitatori (gruppo id=2)
 INSERT INTO users_has_groups (users_id, groups_id) VALUES
 (@mario_id,  2),
 (@giulia_id, 2);
 
--- ============================================================
--- SERVIZI (controllo accessi / ACL)
--- Ogni pagina protetta del backoffice è registrata come "servizio"
--- (username = nome dello script). I servizi sono concessi ai gruppi
--- tramite services_has_groups; gli utenti li ereditano per appartenenza
--- al gruppo (users_has_groups). Al login i servizi dell'utente vengono
--- caricati in sessione e require_service() (include/auth.inc.php) li
--- applica pagina per pagina.
--- ============================================================
 
 INSERT INTO services (username) VALUES
 ('index.php'),
@@ -82,7 +53,6 @@ INSERT INTO services (username) VALUES
 ('groups.php'),      ('groups-form.php'),      ('groups-delete.php'),
 ('services.php'),    ('services-form.php'),    ('services-delete.php');
 
--- Tutti i servizi del backoffice sono concessi al gruppo admin (id = 1)
 INSERT INTO services_has_groups (services_username, groups_id)
 SELECT username, 1 FROM services;
 
@@ -325,11 +295,6 @@ INSERT INTO reviews (experience_id, user_id, rating, comment) VALUES
 (4, @giulia_id, 3,
  'Reperti bellissimi ma il Gabinetto Segreto era chiuso il giorno della nostra visita e non ce l\'avevano detto al momento della prenotazione. La guida si è impegnata, ma resta l\'amaro in bocca. Sufficiente.');
 
--- ============================================================
--- BOX "PERCHÉ SCEGLIERCI" (home_features)
--- L'ordine (sort_order) determina la disposizione 2x2 in homepage:
--- 1 = alto-sx, 2 = alto-dx, 3 = basso-sx, 4 = basso-dx
--- ============================================================
 
 INSERT INTO home_features (icon, title, description, sort_order) VALUES
 ('flaticon-house',      'Esperienze locali',
