@@ -94,7 +94,6 @@ CREATE TABLE locations (
     name        VARCHAR(200) NOT NULL,
     city        VARCHAR(100) NOT NULL,
     address     VARCHAR(300),
-    description TEXT,
     latitude    DECIMAL(10,7),
     longitude   DECIMAL(10,7)
 );

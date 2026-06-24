@@ -5,7 +5,7 @@ require_admin();
 
 $id    = (int)($_GET['id'] ?? 0);
 $error = '';
-$data  = ['name' => '', 'city' => '', 'address' => '', 'description' => '',
+$data  = ['name' => '', 'city' => '', 'address' => '',
           'latitude' => '', 'longitude' => ''];
 
 if ($id > 0) {
@@ -18,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data['name']        = trim($_POST['name']        ?? '');
     $data['city']        = trim($_POST['city']        ?? '');
     $data['address']     = trim($_POST['address']     ?? '');
-    $data['description'] = trim($_POST['description'] ?? '');
     $data['latitude']    = trim($_POST['latitude']    ?? '');
     $data['longitude']   = trim($_POST['longitude']   ?? '');
 
@@ -30,18 +29,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($id === 0) {
             $stmt = db()->prepare(
-                'INSERT INTO locations (name, city, address, description, latitude, longitude)
-                 VALUES (?,?,?,?,?,?)'
+                'INSERT INTO locations (name, city, address, latitude, longitude)
+                 VALUES (?,?,?,?,?)'
             );
             $stmt->execute([$data['name'], $data['city'], $data['address'],
-                            $data['description'], $lat, $lon]);
+                            $lat, $lon]);
         } else {
             $stmt = db()->prepare(
-                'UPDATE locations SET name=?, city=?, address=?, description=?,
+                'UPDATE locations SET name=?, city=?, address=?,
                  latitude=?, longitude=? WHERE id=?'
             );
             $stmt->execute([$data['name'], $data['city'], $data['address'],
-                            $data['description'], $lat, $lon, $id]);
+                            $lat, $lon, $id]);
         }
         header('Location: ' . $config['base'] . '/admin/locations.php');
         exit;
@@ -62,7 +61,6 @@ $block->setContent('error',         $error);
 $block->setContent('loc_name',      htmlspecialchars($data['name']));
 $block->setContent('loc_city',      htmlspecialchars($data['city']));
 $block->setContent('loc_address',   htmlspecialchars($data['address']));
-$block->setContent('loc_description', htmlspecialchars($data['description']));
 $block->setContent('loc_latitude',  htmlspecialchars($data['latitude'] ?? ''));
 $block->setContent('loc_longitude', htmlspecialchars($data['longitude'] ?? ''));
 
