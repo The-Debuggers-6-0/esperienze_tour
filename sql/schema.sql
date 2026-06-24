@@ -67,9 +67,7 @@ CREATE TABLE categories (
 CREATE TABLE experiences (
     id                INT AUTO_INCREMENT PRIMARY KEY,
     title             VARCHAR(200) NOT NULL,
-    slug              VARCHAR(200) NOT NULL UNIQUE,
     description       TEXT,
-    short_description VARCHAR(500),
     price             DECIMAL(8,2) NOT NULL DEFAULT 0.00,
     duration_minutes  INT          DEFAULT NULL,
     max_participants  INT          DEFAULT NULL,

@@ -3,15 +3,6 @@
 require_once __DIR__ . '/../include/bootstrap.inc.php';
 require_admin();
 
-function slugify(string $text): string {
-    $map = ['à'=>'a','á'=>'a','â'=>'a','ä'=>'a','è'=>'e','é'=>'e','ê'=>'e',
-            'ë'=>'e','ì'=>'i','í'=>'i','î'=>'i','ï'=>'i','ò'=>'o','ó'=>'o',
-            'ô'=>'o','ö'=>'o','ù'=>'u','ú'=>'u','û'=>'u','ü'=>'u','ñ'=>'n'];
-    $text = mb_strtolower(strtr($text, $map), 'UTF-8');
-    $text = preg_replace('/[^a-z0-9\s-]/', '', $text);
-    return preg_replace('/[\s-]+/', '-', trim($text));
-}
-
 function upload_cover(int $exp_id): ?string {
     if (empty($_FILES['cover']['name'])) return null;
     $f = $_FILES['cover'];
@@ -27,7 +18,7 @@ function upload_cover(int $exp_id): ?string {
 $id    = (int)($_GET['id'] ?? 0);
 $error = '';
 $data  = [
-    'title' => '', 'slug' => '', 'description' => '', 'short_description' => '',
+    'title' => '', 'description' => '',
     'price' => '0.00', 'duration_minutes' => '', 'max_participants' => '',
     'category_id' => '', 'location' => '', 'location_id' => '', 'is_active' => 1,
 ];
@@ -59,9 +50,7 @@ if ($id > 0) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data['title']             = trim($_POST['title'] ?? '');
-    $data['slug']              = trim($_POST['slug']  ?? '');
     $data['description']       = trim($_POST['description'] ?? '');
-    $data['short_description'] = trim($_POST['short_description'] ?? '');
     $data['price']             = $_POST['price'] ?? '0';
     $data['duration_minutes']  = $_POST['duration_minutes'] !== '' ? (int)$_POST['duration_minutes'] : null;
     $data['max_participants']  = $_POST['max_participants'] !== '' ? (int)$_POST['max_participants'] : null;
@@ -74,21 +63,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($data['title'] === '') {
         $error = 'Il titolo è obbligatorio.';
     } else {
-        if ($data['slug'] === '') {
-            $data['slug'] = slugify($data['title']);
-        }
-
         try {
             if ($id === 0) {
                 $stmt = db()->prepare(
                     'INSERT INTO experiences
-                     (title, slug, description, short_description, price,
+                     (title, description, price,
                       duration_minutes, max_participants, category_id, location, location_id, is_active)
-                     VALUES (?,?,?,?,?,?,?,?,?,?,?)'
+                     VALUES (?,?,?,?,?,?,?,?,?)'
                 );
                 $stmt->execute([
-                    $data['title'], $data['slug'], $data['description'],
-                    $data['short_description'], $data['price'],
+                    $data['title'], $data['description'], $data['price'],
                     $data['duration_minutes'], $data['max_participants'],
                     $data['category_id'], $data['location'], $data['location_id'], $data['is_active'],
                 ]);
@@ -96,13 +80,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } else {
                 $stmt = db()->prepare(
                     'UPDATE experiences SET
-                     title=?, slug=?, description=?, short_description=?, price=?,
+                     title=?, description=?, price=?,
                      duration_minutes=?, max_participants=?, category_id=?, location=?, location_id=?, is_active=?
                      WHERE id=?'
                 );
                 $stmt->execute([
-                    $data['title'], $data['slug'], $data['description'],
-                    $data['short_description'], $data['price'],
+                    $data['title'], $data['description'], $data['price'],
                     $data['duration_minutes'], $data['max_participants'],
                     $data['category_id'], $data['location'], $data['location_id'], $data['is_active'], $id,
                 ]);
@@ -127,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
 
         } catch (PDOException $e) {
-            $error = 'Slug già in uso. Scegli uno slug diverso.';
+            $error = 'Errore durante il salvataggio dell\'esperienza.';
         }
     }
 }
@@ -175,8 +158,6 @@ $block->setContent('action_url',        $config['base'] . '/admin/experiences-fo
 $block->setContent('back_url',          $config['base'] . '/admin/experiences.php');
 $block->setContent('error',             $error);
 $block->setContent('exp_title',         htmlspecialchars($data['title']));
-$block->setContent('exp_slug',          htmlspecialchars($data['slug']));
-$block->setContent('exp_short_desc',    htmlspecialchars($data['short_description']));
 $block->setContent('exp_description',   htmlspecialchars($data['description']));
 $block->setContent('exp_price',         htmlspecialchars($data['price']));
 $block->setContent('exp_duration',      htmlspecialchars($data['duration_minutes'] ?? ''));

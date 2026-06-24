@@ -106,41 +106,34 @@ UPDATE guides SET photo_filename = '5_cover.jpg' WHERE id = 5;
 -- ESPERIENZE (7)
 -- ============================================================
 
-INSERT INTO experiences (id, title, slug, description, short_description, price, duration_minutes, max_participants, category_id, location_id, is_active) VALUES
+INSERT INTO experiences (id, title, description, price, duration_minutes, max_participants, category_id, location_id, is_active) VALUES
 
-(1, 'Tour del Colosseo e Foro Romano', 'tour-colosseo-foro-romano',
+(1, 'Tour del Colosseo e Foro Romano',
  'Immergiti nella storia dell\'antica Roma con una visita guidata al Colosseo e al Foro Romano. Il nostro esperto ti condurrà tra gladiatori, senatori e imperatori che hanno plasmato la civiltà occidentale. Il tour include accesso prioritario salta-coda e una spiegazione approfondita delle tecniche costruttive romane.',
- 'Visita guidata al Colosseo e Foro Romano con accesso prioritario. Un viaggio nel cuore dell\'antica Roma.',
  35.00, 180, 15, 1, 1, 1),
 
-(2, 'Giro in Gondola a Venezia', 'giro-gondola-venezia',
+(2, 'Giro in Gondola a Venezia',
  'Vivi la magia di Venezia a bordo di una gondola tradizionale, scivolando tra i canali silenziosi lontano dalla ressa turistica. Il gondoliere ti guiderà attraverso calli nascoste, ponti storici e palazzi nobiliari raccontando aneddoti e leggende della Serenissima. Un\'esperienza romantica e indimenticabile.',
- 'Un tour in gondola tra i canali nascosti di Venezia. Romantico, autentico, indimenticabile.',
  45.00, 90, 6, 1, 2, 1),
 
-(3, 'Visita guidata agli Uffizi di Firenze', 'visita-uffizi-firenze',
+(3, 'Visita guidata agli Uffizi di Firenze',
  'Esplora la più importante raccolta d\'arte rinascimentale al mondo con una guida specializzata. Dal Botticelli alla Nascita di Venere, da Leonardo a Michelangelo: Sofia ti accompagnerà in un viaggio tra capolavori assoluti, con aneddoti esclusivi e curiosità che i libri di testo non raccontano.',
- 'Tour guidato alla Galleria degli Uffizi tra Botticelli, Leonardo e Michelangelo.',
  28.00, 150, 12, 2, 3, 1),
 
-(4, 'Museo Nazionale di Napoli', 'museo-nazionale-napoli',
+(4, 'Museo Nazionale di Napoli',
  'Il Museo Nazionale di Napoli custodisce i più straordinari reperti di Pompei ed Ercolano. La visita guidata con Antonio ti porterà tra mosaici, bronzi, affreschi e il celebre Gabinetto Segreto, ricostruendo la vita quotidiana degli antichi romani strappata all\'eruzione del Vesuvio del 79 d.C.',
- 'Visita guidata al Museo Nazionale di Napoli: reperti di Pompei, bronzi e mosaici unici al mondo.',
  22.00, 120, 18, 2, 4, 1),
 
-(5, 'Cammino delle Cinque Terre', 'cammino-cinque-terre',
+(5, 'Cammino delle Cinque Terre',
  'Un trekking mozzafiato lungo il Sentiero Azzurro che collega i cinque borghi più pittoreschi della Liguria. Riomaggiore, Manarola, Corniglia, Vernazza e Monterosso: panorami sul mar Ligure, vigneti terrazzati e profumo di basilico. Luca Ferrari ti guiderà con sicurezza lungo i tratti più panoramici, raccontando storia e cultura locale.',
- 'Trekking guidato tra i cinque borghi della Liguria con vista mozzafiato sul mar Ligure.',
  30.00, 300, 10, 3, 5, 1),
 
-(6, 'Sentiero degli Dei ad Amalfi', 'sentiero-degli-dei-amalfi',
+(6, 'Sentiero degli Dei ad Amalfi',
  'Il Sentiero degli Dei è considerato uno dei percorsi di trekking più belli d\'Europa. Camminando tra Bomerano e Positano, a 600 metri sul livello del mare, godrai di viste spettacolari sulla Costiera Amalfitana, sul Golfo di Salerno e sulle isole Li Galli. Luca Ferrari ti guiderà in tutta sicurezza lungo questo percorso leggendario.',
- 'Trekking sul leggendario Sentiero degli Dei con viste spettacolari sulla Costiera Amalfitana.',
  25.00, 240, 10, 3, 6, 1),
 
-(7, 'Tour del Centro Storico di Roma', 'tour-centro-storico-roma',
+(7, 'Tour del Centro Storico di Roma',
  'Un tour a piedi nel cuore della Roma barocca e rinascimentale: Piazza Navona, il Pantheon, Campo de\' Fiori e Fontana di Trevi. Marco e Sofia ti racconteranno storie, scandali e segreti dei papi e degli artisti che hanno trasformato Roma nella città eterna. Il tour ideale per chi visita Roma per la prima volta.',
- 'Tour a piedi tra Pantheon, Piazza Navona e Fontana di Trevi nel cuore di Roma.',
  20.00, 150, 20, 1, 1, 1);
 
 -- ============================================================
