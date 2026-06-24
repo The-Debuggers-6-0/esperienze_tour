@@ -106,7 +106,6 @@ CREATE TABLE guides (
     photo_filename VARCHAR(255),
     languages      VARCHAR(200),
     email          VARCHAR(100),
-    phone          VARCHAR(30),
     is_active      TINYINT(1)  NOT NULL DEFAULT 1,
     created_at     TIMESTAMP   DEFAULT CURRENT_TIMESTAMP
 );

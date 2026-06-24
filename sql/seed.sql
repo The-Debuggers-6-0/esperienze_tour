@@ -83,17 +83,17 @@ INSERT INTO locations (id, name, city, address, latitude, longitude) VALUES
 -- GUIDE (5)
 -- ============================================================
 
-INSERT INTO guides (id, name, surname, bio, languages, email, phone, is_active) VALUES
+INSERT INTO guides (id, name, surname, bio, languages, email, is_active) VALUES
 (1, 'Marco',   'Rossi',    'Storico dell\'arte con 15 anni di esperienza nel raccontare Roma antica. Specializzato in archeologia romana e storia imperiale.',
-                            'Italiano, Inglese',            'marco.rossi@guide.it',    '+39 333 1001001', 1),
+                            'Italiano, Inglese',            'marco.rossi@guide.it',    1),
 (2, 'Sofia',   'Bianchi',  'Storica dell\'arte fiorentina, laurea alla Normale di Pisa. Appassionata di Rinascimento e pittura italiana.',
-                            'Italiano, Francese, Spagnolo', 'sofia.bianchi@guide.it',  '+39 333 2002002', 1),
+                            'Italiano, Francese, Spagnolo', 'sofia.bianchi@guide.it',  1),
 (3, 'Luca',    'Ferrari',  'Guida alpina certificata CAI, esperto di trekking costiero e sentieri appenninici. 10 anni sulle Cinque Terre e la Costiera Amalfitana.',
-                            'Italiano, Inglese, Tedesco',   'luca.ferrari@guide.it',   '+39 333 3003003', 1),
+                            'Italiano, Inglese, Tedesco',   'luca.ferrari@guide.it',   1),
 (4, 'Giulia',  'Marino',   'Veneziana doc, narratrice appassionata della Serenissima. Specializzata in storia della Repubblica di Venezia e architettura gotica veneziana.',
-                            'Italiano, Inglese',            'giulia.marino@guide.it',  '+39 333 4004004', 1),
+                            'Italiano, Inglese',            'giulia.marino@guide.it',  1),
 (5, 'Antonio', 'De Luca',  'Napoletano, storico e guida museale con specializzazione in arte greco-romana e reperti del Vesuvio. Collabora col Museo Nazionale da 12 anni.',
-                            'Italiano, Inglese',            'antonio.deluca@guide.it', '+39 333 5005005', 1);
+                            'Italiano, Inglese',            'antonio.deluca@guide.it', 1);
 
 -- Foto delle guide (file presenti in uploads/guides/)
 UPDATE guides SET photo_filename = '1_cover.jpg' WHERE id = 1;

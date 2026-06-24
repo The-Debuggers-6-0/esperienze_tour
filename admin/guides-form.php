@@ -18,7 +18,7 @@ function upload_guide_photo(int $guide_id): ?string {
 $id    = (int)($_GET['id'] ?? 0);
 $error = '';
 $data  = ['name' => '', 'surname' => '', 'bio' => '', 'photo_filename' => '',
-          'languages' => '', 'email' => '', 'phone' => '', 'is_active' => 1];
+          'languages' => '', 'email' => '', 'is_active' => 1];
 
 if ($id > 0) {
     $stmt = db()->prepare('SELECT * FROM guides WHERE id = ?');
@@ -32,7 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data['bio']       = trim($_POST['bio']       ?? '');
     $data['languages'] = trim($_POST['languages'] ?? '');
     $data['email']     = trim($_POST['email']     ?? '');
-    $data['phone']     = trim($_POST['phone']     ?? '');
     $data['is_active'] = isset($_POST['is_active']) ? 1 : 0;
 
     if ($data['name'] === '' || $data['surname'] === '') {
@@ -40,22 +39,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         if ($id === 0) {
             $stmt = db()->prepare(
-                'INSERT INTO guides (name, surname, bio, languages, email, phone, is_active)
-                 VALUES (?,?,?,?,?,?,?)'
+                'INSERT INTO guides (name, surname, bio, languages, email, is_active)
+                 VALUES (?,?,?,?,?,?)'
             );
             $stmt->execute([
                 $data['name'], $data['surname'], $data['bio'],
-                $data['languages'], $data['email'], $data['phone'], $data['is_active'],
+                $data['languages'], $data['email'], $data['is_active'],
             ]);
             $id = (int)db()->lastInsertId();
         } else {
             $stmt = db()->prepare(
-                'UPDATE guides SET name=?, surname=?, bio=?, languages=?, email=?, phone=?, is_active=?
+                'UPDATE guides SET name=?, surname=?, bio=?, languages=?, email=?, is_active=?
                  WHERE id=?'
             );
             $stmt->execute([
                 $data['name'], $data['surname'], $data['bio'],
-                $data['languages'], $data['email'], $data['phone'], $data['is_active'], $id,
+                $data['languages'], $data['email'], $data['is_active'], $id,
             ]);
         }
 
@@ -97,7 +96,6 @@ $block->setContent('guide_surname',  htmlspecialchars($data['surname']));
 $block->setContent('guide_bio',      htmlspecialchars($data['bio'] ?? ''));
 $block->setContent('guide_languages',htmlspecialchars($data['languages'] ?? ''));
 $block->setContent('guide_email',    htmlspecialchars($data['email'] ?? ''));
-$block->setContent('guide_phone',    htmlspecialchars($data['phone'] ?? ''));
 $block->setContent('guide_active',   $data['is_active'] ? 'checked' : '');
 $block->setContent('photo_preview',  $photoPreview);
 
